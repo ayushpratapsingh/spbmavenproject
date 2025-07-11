@@ -18,7 +18,7 @@ public class SpbproApplication {
 	@GetMapping("/hello")
        public String firstApp(@RequestParam(value = "name", defaultValue = "Coder") String name) 
 	   {
-       return String.format("Congratulationss  %s, you've built your first Spring Boot Application from Scratch!!", name);
+       return String.format("Congratulationss  %s, you've built your first Spring Boot Application from Scratch in prod env!!", name);
        }
 
 }
