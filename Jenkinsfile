@@ -1,19 +1,19 @@
 pipeline {
     agent any
-
-    parameters{
-        choice(choices: ['master', 'dev', 'test'], name: 'branch_name')
-}
+    tools
+    {
+        maven "MVN3"
+        jdk "JDK17"
+    }
     stages {
-        stage('Git Checkout') {
+        stage('github fetch') {
             steps {
-               git branch: "${params.branch_name}", url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
+                git branch: 'dev', url: 'https://github.com/jaiswaladi246/Boardgame.git'
             }
         }
-        stage('Clean Artifacts') {
+        stage('mvn build') {
             steps {
-                sh "mvn -v"
-                sh "mvn clean"
+                sh "mvn package"
             }
         }
     }
