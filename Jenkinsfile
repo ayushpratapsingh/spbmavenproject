@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('github fetchesss') {
             steps {
-                git branch: 'dev', url: 'https://github.com/jaiswaladi246/Boardgame.git'
+                git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
         stage('mvn build') {
