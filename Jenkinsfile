@@ -6,7 +6,7 @@ pipeline {
         jdk "JDK17"
     }
     stages {
-        stage('github fetches') {
+        stage('github fetchess') {
             steps {
                 git branch: 'dev', url: 'https://github.com/jaiswaladi246/Boardgame.git'
             }
