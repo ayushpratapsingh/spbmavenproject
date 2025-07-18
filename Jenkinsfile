@@ -6,7 +6,7 @@ pipeline {
         jdk "JDK17"
     }
     stages {
-        stage('github fetchesss') {
+        stage('github dev branch fetches') {
             steps {
                 git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
