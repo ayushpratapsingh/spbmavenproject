@@ -11,7 +11,12 @@ pipeline {
                 git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
-        stage('mvn build') {
+        stage('mvn compile') {
+            steps {
+                sh "mvn compile"
+            }
+        }
+        stage('mvn package') {
             steps {
                 sh "mvn package"
             }
