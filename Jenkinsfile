@@ -1,19 +1,19 @@
 pipeline {
-    agent any
-
-    parameters{
-        choice(choices: ['master', 'dev', 'test'], name: 'branch_name')
-}
+    agent any 
+    tools
+    {
+        maven "MVN3"
+        jdk "JDK17"
+    }
     stages {
-        stage('Git Checkout') {
+        stage('github dev branch fetches') {
             steps {
-               git branch: "${params.branch_name}", url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
+                git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
-        stage('Clean Artifacts') {
+        stage('mvn build') {
             steps {
-                sh "mvn -v"
-                sh "mvn clean"
+                sh "mvn package"
             }
         }
     }
