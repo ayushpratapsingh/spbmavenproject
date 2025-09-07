@@ -11,6 +11,16 @@ pipeline {
                 git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
+        stage('maven clean') {
+            steps {
+              sh "maven clean"    
+            }
+        }
+        stage('maven package') {
+            steps {
+              sh "maven package -DSkipTests"    
+            }
+        }
         stage('docker build and push') {
            steps {
             script{
