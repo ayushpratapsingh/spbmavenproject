@@ -28,4 +28,4 @@ COPY target/*.war /app/myapp.war
 EXPOSE 8082
 
 # Define the command to run the application when the container starts
-ENTRYPOINT ["java", "-jar", "your-application.war"]
+ENTRYPOINT ["java", "-jar", "myapp.war"]
