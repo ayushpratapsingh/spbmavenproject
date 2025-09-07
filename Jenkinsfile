@@ -13,12 +13,12 @@ pipeline {
         }
         stage('maven clean') {
             steps {
-              sh "maven clean"    
+              sh "mvn clean"    
             }
         }
         stage('maven package') {
             steps {
-              sh "maven package -DSkipTests"    
+              sh "mvn package -DSkipTests"    
             }
         }
         stage('docker build and push') {
