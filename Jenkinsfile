@@ -15,7 +15,7 @@ pipeline {
            steps {
             script{
             withDockerRegistry(credentialsId: 'docker-jenkins-login') {
-                    sh "docker build -t aps0813568/jenkins-demo:tagv1"
+                    sh "docker build -t aps0813568/jenkins-demo:tagv1 ."
                     sh "docker push"
                   }
               }
