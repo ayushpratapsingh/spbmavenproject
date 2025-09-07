@@ -11,15 +11,14 @@ pipeline {
                 git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
-        stage('mvn compile') {
-            steps {
-                sh "mvn compile"
-            }
-        }
-        stage('mvn package') {
-            steps {
-                sh "mvn package"
-            }
-        }
-    }
+        stage('docker build and push') {
+           steps {
+            script{
+            withDockerRegistry(credentialsId: 'docker-jenkins-login') {
+                    docker build -t aps0813568/jenkins-demo:tagv1
+                    sh "docker push"
+                  }
+              }
+          }
+     }
 }
