@@ -16,7 +16,7 @@ public class SpbproApplication {
 		SpringApplication.run(SpbproApplication.class, args);
 	}
 	@GetMapping("/hello")
-       public String firstApp(@RequestParam(value = "name", defaultValue = "Coder") String name) 
+       public String firstApp(@RequestParam(value = "name", defaultValue = "Pradeep and Ayush") String name) 
 	   {
        return String.format("Congratulationss  %s, you've built your first Spring Boot Application from Scratch in dev env!!", name);
        }
