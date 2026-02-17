@@ -5,32 +5,44 @@ pipeline {
         maven "MVN3"
         jdk "JDK17"
     }
-    stages {
-        stage('github dev branch fetches') {
-            steps {
+    stages 
+	{
+        stage('github dev branch fetches') 
+		{
+            steps 
+			{
                 git branch: 'dev', url: 'https://github.com/ayushpratapsingh/spbmavenproject.git'
             }
         }
-        stage('maven clean') {
-            steps {
+        stage('maven clean') 
+		{
+            steps 
+			{
               sh "mvn clean"    
             }
         }
-        stage('maven package') {
-            steps {
+        stage('maven package') 
+		{
+            steps 
+			{
               sh "mvn package -DSkipTests"    
             }
         }
-        stage('docker build and push') {
-           steps {
-            script{
-            withDockerRegistry(credentialsId: 'docker-jenkins-login') {
+        stage('docker build and push') 
+		{
+           steps 
+		   {
+            script
+			{
+            withDockerRegistry(credentialsId: 'docker-jenkins-login') 
+			  {
                     sh "docker build -t aps0813568/jenkins-demo:tagv1 ."
                     sh "docker push aps0813568/jenkins-demo:tagv1"
-                  }
               }
+            }
           }
-     }
+		}
+    }
         post {
         always {
             mail to: 'ayush.pratap906@gmail.com',
@@ -41,7 +53,6 @@ pipeline {
                  Build Number: ${env.BUILD_NUMBER}
                  Build URL: ${env.BUILD_URL}
                  """
-        }
-    }
-  }
+               }
+           }
 }
