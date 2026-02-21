@@ -46,7 +46,7 @@ pipeline {
         post {
         always {
             mail to: 'ayush.pratap906@gmail.com',
-                 subject: "Jenkins Build Notification: ${currentBuild.fullDisplayName}",
+                 subject: "Jenkins Build Notification from Jenkins: ${currentBuild.fullDisplayName}",
                  body: """\
                  Build Status: ${currentBuild.currentResult}
                  Project: ${env.JOB_NAME}
